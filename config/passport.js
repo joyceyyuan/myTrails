@@ -45,7 +45,7 @@ passport.use(
 	)
 )
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+    done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
@@ -55,7 +55,7 @@ passport.deserializeUser(function(id, done) {
   // be availible in every Single controller function, so you always know the logged in user
   User.findById(id, function (err, userDoc) { // search our databases for the user, with the id from the session
     done(err, userDoc); // when we call done here pass in the studentDoc,  This is where req.user = studentDoc
-  });
+    });
 });
 
 

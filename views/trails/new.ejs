@@ -1,0 +1,29 @@
+<%- include('../partials/header') %>
+<h2>Enter a New Trail</h2>
+<form id="new-form" action="/trails" method="POST">
+	<label>Name:
+        <input type="text" name="name">
+    </label><br>
+    <label>Location:
+        <input type="text" name="location">
+    </label><br>
+    <label>Length:
+        <input type="number" name="length" min="0">
+    </label><br>
+    <label>Difficulty:
+        <select name="difficulty">
+			<option value="Easy" selected>Easy</option>
+			<option value="Moderate">Moderate</option>
+			<option value="Hard">Hard</option>
+		</select>
+    </label><br>
+	<label>Route Type:
+        <select name="route type">
+			<option value="Out & back">Out & back</option>
+			<option value="Loop" selected>Loop</option>
+			<option value="Point to point">Point to point</option>
+		</select>
+	</label><br>
+		<input type="submit" value="Add Trails">
+</form>
+<%- include('../partials/footer') %>

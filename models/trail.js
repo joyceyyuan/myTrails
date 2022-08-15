@@ -14,28 +14,37 @@ const reviewSchema = new Schema(
     rating: { type: Number, min: 1, max: 5, default: 5 },
     user: {type: Schema.Types.ObjectId, ref: 'User', required: true}, //< - we want to make sure a review is always tied to a user
     userName: String,
-},
-    {
-    timestamps: true,
-    }
-);
+    dateWent: {
+        type: Date,
+        default: new Date()
+    },
+    activityDid: {
+        type: String,
+        enum :['Hiking','Running','Biking','Backpacking','Snowshoeing','Horseback riding'],
+        default:'Hiking'
+    },
+    timestamps: true
+});
 
 const trailSchema = new Schema({
     name: {
-    type: String,
-    required: true,
+        type: String,
+        required: true,
     },
-    location: String,
+    location: {
+        type: String,
+        required: true,
+        },
     length: { type: Number, min: 0},
     difficulty: {
-    type: String,
-    enum: ['Easy','Moderate','Hard'],
-    default:'Easy'
+        type: String,
+        enum: ['Easy','Moderate','Hard'],
+        default:'Easy'
     },
     routeType: {
-    type: String,
-    enum: ['Loop','Out & back','Point to point'],
-    default:'Loop'
+        type: String,
+        enum: ['Loop','Out & back','Point to point'],
+        default:'Loop'
     },
     // One to Many relationshipt (many reviews)
     reviews: [reviewSchema],
