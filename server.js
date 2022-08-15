@@ -8,8 +8,10 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
-const indexRoutes = require('./routes/index');
 
+const indexRoutes = require('./routes/index');
+const trailsRouter = require('./routes/trails');
+const reviewsRouter = require('./routes/reviews');
 
 // create the Express app
 const app = express();
@@ -51,6 +53,8 @@ app.use(function (req, res, next) {
 
 // mount all routes with appropriate base paths
 app.use('/', indexRoutes);
+app.use('/trails', trailsRouter);
+app.use('/', reviewsRouter); 
 
 
 // invalid request, send 404 page
