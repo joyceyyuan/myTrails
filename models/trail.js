@@ -12,7 +12,7 @@ const reviewSchema = new Schema(
     {
     content: String,
     rating: { type: Number, min: 1, max: 5, default: 5 },
-    user: {type: Schema.Types.ObjectId, ref: 'User', required: true}, //< - we want to make sure a review is always tied to a user
+    user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
     userName: String,
     dateWent: {
         type: Date,
@@ -22,7 +22,8 @@ const reviewSchema = new Schema(
         type: String,
         enum :['Hiking','Running','Biking','Backpacking','Snowshoeing','Horseback riding'],
         default:'Hiking'
-    },
+    }
+},{
     timestamps: true
 });
 
