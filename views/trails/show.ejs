@@ -29,12 +29,8 @@
       <option value="5" selected>5</option>
     </select>
     </label><br>
-    <label>Date Went:
-      <input type="date" name="datewent">
-    </label><br>
     <label>Activity Did:
     <select name="activity">
-      'Hiking','Running','Biking','Backpacking','Snowshoeing','Horseback riding'
       <option value="Hiking" selected>Hiking</option>
       <option value="Running">Running</option>
       <option value="Biking">Biking</option>
@@ -56,7 +52,6 @@
             <th>Date Submitted</th>
             <th>Review</th>
             <th>Rating</th>
-            <th>Date Went</th>
             <th>Activity Did</th>
           </tr>
         </thead>
@@ -69,7 +64,6 @@
               <td><%= r.createdAt.toLocaleDateString() %></td>
               <td><%= r.content %></td>
               <td><%= r.rating %></td>
-              <td><%= r.dateWent %></td>
               <td><%= r.activityDid %></td>
               <td>
                 <% if (user?._id.equals(r.user)) { %>

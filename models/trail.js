@@ -14,10 +14,7 @@ const reviewSchema = new Schema(
     rating: { type: Number, min: 1, max: 5, default: 5 },
     user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
     userName: String,
-    dateWent: {
-        type: Date,
-        default: new Date()
-    },
+    email: String,
     activityDid: {
         type: String,
         enum :['Hiking','Running','Biking','Backpacking','Snowshoeing','Horseback riding'],

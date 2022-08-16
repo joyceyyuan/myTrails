@@ -37,10 +37,10 @@ function newTrail(req, res) {
 	res.render('trails/new');
 }
 
-//creating a trail
 function create(req, res){
-	console.log(req.body);
-  req.body.user = req.user._id;
+	console.log(req.body,'<-this is req.body');
+  req.body.user = req.user;
+  console.log(req.body,'<-this is new req.body');
 	Trail.create(req.body, function(err, trailDocumentCreatedInTheDatabase){
 		if(err){
 			console.log(err, ' <- err in the trail create controller');

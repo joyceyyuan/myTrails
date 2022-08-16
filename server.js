@@ -8,8 +8,8 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
-
-const indexRoutes = require('./routes/index');
+//require our routes
+const indexRouter = require('./routes/index');
 const trailsRouter = require('./routes/trails');
 const reviewsRouter = require('./routes/reviews');
 
@@ -52,7 +52,7 @@ app.use(function (req, res, next) {
 });
 
 // mount all routes with appropriate base paths
-app.use('/', indexRoutes);
+app.use('/', indexRouter);
 app.use('/trails', trailsRouter);
 app.use('/', reviewsRouter); 
 

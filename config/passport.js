@@ -1,8 +1,12 @@
+//configuration file for passport, 
+// this isn't middleware, its just config
+// so we won't export anything, we just need to require in the server, 
+// just like the database file!
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 const User = require('../models/user');
-
-// configuring Passport!
+// plug in to Oauth Strategy, and provide VERIFY callback function, 
+// this function will be called whenever a user logs in using Oauth
 passport.use(
 	new GoogleStrategy(
 		{
@@ -32,7 +36,6 @@ passport.use(
 					name: profile.displayName,
 					googleId: profile.id,
 					email: profile.emails[0].value, // <- this give us the email
-					avatar: profile.photos[0].value //< - the hosted image string/link
 				})
 				// pass the newUser document to passport!
 				return cb(null, newUser)
@@ -44,19 +47,22 @@ passport.use(
 		}
 	)
 )
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-
-  // Find your User, using your model, and then call done(err, whateverYourUserIsCalled)
-  // When you call this done function passport assigns the user document to req.user, which will 
-  // be availible in every Single controller function, so you always know the logged in user
-  User.findById(id, function (err, userDoc) { // search our databases for the user, with the id from the session
-    done(err, userDoc); // when we call done here pass in the studentDoc,  This is where req.user = studentDoc
-    });
-});
 
 
+// serializeUser, return the data theat passport is going to add to the session (cookie!) to track the user
+// this function is called after the verify callback function ^ the thing above
 
+// user argument is coming from above, cb(null, newUser), cb(null, user)
+passport.serializeUser(function(user, cb){
+	cb(null, user._id); // <- storing in our session cookie the logged in users id
+})
+
+// desererialzieUser method is called every time a request comes in from a logged in user!
+// THIS IS WHERE THE PASSPORT ASSIGNS THE USER DOCUMENT TO req.user, so in every single function we have access 
+// to req.user which is the logged in users mongoose document!
+passport.deserializeUser(function(userId, cb){
+	User.findById(userId, function(err, userDocument){
+		if(err) return cb(err)
+		cb(null, userDocument);  // <- this assigns the userDocument to req.user = userDocument
+	})
+})

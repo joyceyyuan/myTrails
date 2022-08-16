@@ -18,7 +18,7 @@ function create(req, res) {
     // user centric CRUD!
     // req.user comes from passport! and it is the userDocument of the logged client
     req.body.user = req.user._id;
-    req.body.userName = req.user.name;
+    req.body.email = req.user.email;
     trailDocument.reviews.push(req.body); // <- mutating (changing) the document
     // that we found from the database,
     // so when we do that, we need to tell the database we changed something,
