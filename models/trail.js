@@ -36,7 +36,8 @@ const trailSchema = new Schema({
         type: String,
         required: true,
         },
-    length: { type: Number, min: 0},
+    length: { type: Schema.Types.Decimal, min: 0},
+    elevationGain: {type: Number, min:0, max:29029},
     difficulty: {
         type: String,
         enum: ['Easy','Moderate','Hard'],

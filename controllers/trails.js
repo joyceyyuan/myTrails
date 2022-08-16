@@ -13,7 +13,7 @@ function show(req, res) {
 		console.log(trailDocument, " <- show page");
 			res.render('trails/show', { 
 				title: 'Trail Detail', 
-				trails: trailDocument,
+				trail: trailDocument,
 			});
 		});
 }
@@ -37,6 +37,7 @@ function newTrail(req, res) {
 	res.render('trails/new');
 }
 
+//creating a trail
 function create(req, res){
 	console.log(req.body);
   req.body.user = req.user._id;

@@ -9,8 +9,8 @@ module.exports = {
 
 function create(req, res) {
     console.log(req.user, " <- this is req.user")
-    // console.log(req.params.id, " <- params trail id");
-    // console.log(req.body, " <- the contents of the form aka the review");
+    console.log(req.params.id, " <- params trail id");
+    console.log(req.body, " <- the contents of the form aka the review");
     // First we have to find the trail
     Trail.findById(req.params.id, function (err, trailDocument) {
     // then we need to add the review (aka req.body) to that trails reviews array

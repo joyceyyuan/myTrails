@@ -4,7 +4,7 @@ const reviewsCtrl = require('../controllers/reviews');
 
 router.post('/trails/:id/reviews', reviewsCtrl.create);
 router.delete('/reviews/:id', reviewsCtrl.delete);
-//router.get('/trails/:id/comments', reviewsCtrl.edit);
+//router.get('/reviews/:id/edit', reviewsCtrl.edit);
 
 
 module.exports = router;
