@@ -9,12 +9,15 @@
 </head>
 <body>
   <nav>
-    <a href="/trails">ALL TRAILS</a>
     <% if (user) { %>
-      <a href="/trails/new" >ADD TRAIL</a>
+      <div>Welcome, <%= user.name %></div>
+      <a href="/trails">ALL TRAILS</a>
+      <a href="/trails/new" >ADD NEW TRAIL</a>
+      <a href="/trails/<%= user._id %>">My TRAILS</a>
       <a href="/logout">LOG OUT</a>
     <% } else { %>
       <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+      <p>Welcome to MyTrails. Explore, plan and share your favorite trails here!</p>
     <% } %>
   </nav>
   <main>

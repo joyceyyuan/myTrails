@@ -7,5 +7,8 @@ router.get('/', trailController.index);
 router.get('/new', isLoggedIn, trailController.new);
 router.get('/:id', trailController.show);
 router.post('/', isLoggedIn, trailController.create);
+router.get('/:id/details', trailController.edit);
+// router.delete('/:id', trailController.delete);
+// router.put('/:id', trailController.update);
 
 module.exports = router;
