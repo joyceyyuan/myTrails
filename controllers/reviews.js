@@ -18,7 +18,7 @@ function create(req, res) {
     console.log(trail, " <- trail");
     // user centric CRUD!
     // req.user comes from passport! and it is the userDocument of the logged client
-    req.body.userId = req.user._id;
+    req.body.user = req.user._id;
     req.body.userName =req.user.name;
     req.body.email = req.user.email;
     console.log(req.body, " <- updated contents of the form aka the review");
@@ -28,6 +28,7 @@ function create(req, res) {
     // so we have to save the document
     trail.save(function(err) {
         console.log(trail,'<-this is trail document review controller create function');
+        console.log(err,'<-error in ')
         console.log(trail.reviews,'this is the reviews of trail')
         res.redirect(`/trails/${trail._id}`);
         });
