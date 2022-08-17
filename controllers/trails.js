@@ -7,16 +7,16 @@ module.exports = {
   index,
   show,
   edit,
-  // update,
-  // delete: deleteTrail
+  update,
+  delete: deleteTrail
 };
 
 function show(req, res) {
 	Trail.findById(req.params.id, function(err, trailDocument){
 		console.log(trailDocument, " <- show page");
 			res.render('trails/show', { 
-        title: 'Trail Detail',
-				trails: trailDocument
+        title: 'Trail Details',
+				trail: trailDocument
 			});
 		});
 }
@@ -57,13 +57,9 @@ function create(req, res){
 			return res.render('trails/new');
 		}
 		console.log(trailDocument, ' <- trail Document created in db');
-		res.redirect('/trails/'); // may redirect to trails/${req.user._id} later
+		res.redirect('/trails'); // may redirect to trails/${req.user._id} later
 	})
 }
-
-
-
-
 
 
 function edit(req, res) {
@@ -76,16 +72,16 @@ function edit(req, res) {
   });
 }
 
-// function update(req, res) {
-//   Trail.findByIdAndUpdate(req.params.id, req.body, function(err, trail) {
-//       res.redirect(`/trails/${req.user._id}`);
-//   })
-// }
+function update(req, res) {
+  Trail.findByIdAndUpdate(req.params.id, req.body, function(err, trail) {
+      res.redirect(`/trails/${req.user._id}`);
+  })
+}
 
-// function deleteTrail(req, res) {
-//   Trail.findOneAndDelete(
-//     {_id: req.params.id, user: req.user._id}, function(err) {
-//       res.redirect(`/trails/${req.user._id}`);
-//     }
-//   );
-// }
+function deleteTrail(req, res) {
+  Trail.findOneAndDelete(
+    {_id: req.params.id, user: req.user._id}, function(err) {
+      res.redirect(`/trails/${req.user._id}`);
+    }
+  );
+}
