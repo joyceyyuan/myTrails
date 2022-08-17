@@ -28,6 +28,8 @@ function create(req, res) {
     // so when we do that, we need to tell the database we changed something,
     // so we have to save the document
     trailDocument.save(function(err) {
+        // console.log(trailDocument,'<-this is trail document in save function');
+        console.log(trailDocument.reviews,'this is the reviews of trailDocument')
         res.redirect(`/trails/${req.params.id}`);
         });
     });

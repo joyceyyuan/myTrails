@@ -40,21 +40,31 @@ function newTrail(req, res) {
 	res.render('trails/new');
 }
 
+
+// function myTrails(req, res) {
+// 	res.render('trails/mytrails');
+// }
+
 function create(req, res){
 	console.log(req.body,'<-this is req.body');
   req.body.userName =req.user.name;
   req.body.email = req.user.email;
   req.body.user = req.user._id;
   console.log(req.body,'<-this is new req.body');
-	Trail.create(req.body, function(err, trailDocumentCreatedInTheDatabase){
+	Trail.create(req.body, function(err, trailDocument){
 		if(err){
 			console.log(err, ' <- err in the trail controller create function');
 			return res.render('trails/new');
 		}
-		console.log(trailDocumentCreatedInTheDatabase, ' <- trail created in db');
-		res.redirect('/trails/${trailDocumentCreatedInTheDatabase._id}`');
+		console.log(trailDocument, ' <- trail Document created in db');
+		res.redirect('/trails/'); // may redirect to trails/${req.user._id} later
 	})
 }
+
+
+
+
+
 
 function edit(req, res) {
   console.log(req.params.id, "<-req.params.id in Trails controller edit function")

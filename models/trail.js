@@ -46,7 +46,7 @@ const trailSchema = new Schema({
         default:'Loop'
     },
     // One to Many relationshipt (many reviews)
-    reviews: [reviewSchema],
+    reviews: [reviewSchema]
 });
 
 // Create our model, which will create the collection,

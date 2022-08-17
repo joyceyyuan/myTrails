@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+<h1>My Trails</h1>
+<table id="myTrails-list">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Length(mile)</th>
+            <th>Elevation Gain(ft)</th>
+            <th>Difficulty</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% trails.forEach(function(t) { %>
+        <tr>
+            <td><%= t.name %></td>
+            <td><%= t.length %></td>
+            <td><%= t.elevationGain %></td>
+            <td><%= t.difficulty %></td>
+            <td><%= t.location %></td>
+            <td><a href="/trails/<%= t._id %>"> More details</a></td>
+            <% if (user?._id.equals(t.user)) { %>
+                <form action="/trails/<%= user._id %>?_method=DELETE" method="POST">
+                  <button type="submit">X</button>
+                  <% } %>
+        </tr>
+    <% }); %>
+    </tbody>
+</table>
+<%- include('../partials/footer') %>
