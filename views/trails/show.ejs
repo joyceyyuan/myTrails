@@ -64,17 +64,9 @@
                   <td>
                     <% if (user?._id.equals(r.user)) { %>
                       <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-                        <button type="submit">X</button> 
+                        <button type="submit">X</button>
                       </form>
-                      <form id="edit-review-form" method="GET" action="/reviews/<%= r._id %>/edit">
-                        <textarea name="content" value="<%= r.content %>"></textarea>
-                        <button type="submit">Edit</button>
-                      </form>
-                      <form action="/reviews/<%= r._id %>?_method=PUT" method="POST">
-                        <textarea name="content" value="<%= r.content %>"></textarea>
-                        <button type="submit">Update Review</button>
-                      </form> 
-                      
+                        <a id="edit-review-form" href="/reviews/<%= r._id %>/edit"> | Edit )</a>
                     <% } %>
                   </td>
                 </tr>

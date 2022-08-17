@@ -6,6 +6,7 @@ module.exports = {
     create,
     delete: deleteReview,
     edit,
+    update
 };
 
 function create(req, res) {
@@ -28,7 +29,6 @@ function create(req, res) {
     // so we have to save the document
     trail.save(function(err) {
         console.log(trail,'<-this is trail document review controller create function');
-        console.log(err,'<-error in ')
         console.log(trail.reviews,'this is the reviews of trail')
         res.redirect(`/trails/${trail._id}`);
         });
@@ -36,25 +36,40 @@ function create(req, res) {
 }
 
 
-
 function deleteReview(req, res) {
-    // Note the cool "dot" syntax to query on the property of a subdoc
-    Trail.findOne({'reviews._id': req.params.id}, function(err, trail) {
-      // Find the review subdoc using the id method on Mongoose arrays
-      // https://mongoosejs.com/docs/subdocs.html
-        const reviewSubdoc = trail.reviews.id(req.params.id);
-      // Ensure that the review was created by the logged in user
-        if (!reviewSubdoc.userId.equals(req.user._id)) return res.redirect(`/trails/${trail._id}`);
-      // Remove the review using the remove method of the subdoc
-        reviewSubdoc.remove();
-      // Save the updated trail
+    Trail.findOne({'reviews._id': req.params.id, 'reviews.user': req.user._id}, function(err, trail) {
+        if (!trail || err) return res.redirect(`/trails/${trail._id}`);
+        trail.reviews.remove(req.params.id);
         trail.save(function(err) {
-        // Redirect back to the trail's show view
-        res.redirect(`/trails/${trail._id}`);
+            res.redirect(`/trails/${trail._id}`);
         });
     });
 }
 
+
 function edit(req, res) {
-    res.render ('trails/reviews',);
+    Trail.findOne({'reviews._id': req.params.id}, function(err, trail) {
+    // Find the review subdoc using the id method on Mongoose arrays
+        const review = trail.reviews.id(req.params.id);
+    // Render the reviews/edit.ejs template, passing to it the review
+    res.render('reviews/edit', {review});
+    });
 }
+
+function update(req, res) {
+    Trail.findOne({'reviews._id': req.params.id}, function(err, trail) {
+      // Find the review subdoc using the id method on Mongoose arrays
+      const reviewSubdoc = trail.reviews.id(req.params.id);
+      // Ensure that the review was created by the logged in user
+      if (!reviewSubdoc.user.equals(req.user._id)) return res.redirect(`/trails/${trail._id}`);
+      // Update the content of the review
+      reviewSubdoc.content = req.body.content;
+      console.log(req.body)
+      console.log(reviewSubdoc,'<-reviewsubdoc')
+      // Save the updated trail
+      trail.save(function(err) {
+        // Redirect back to the trail's show view
+        res.redirect(`/trails/${trail._id}`);
+      });
+    });
+  }
