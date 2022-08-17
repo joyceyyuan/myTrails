@@ -17,6 +17,7 @@ body {
 
 body > nav {
   background-color: #4b995c;
+  opacity: 0.85;
   grid-area: nav;
   display: flex;
   justify-content: flex-center;
@@ -48,18 +49,21 @@ nav > a {
 }
 
 nav > a:hover {
-  color: rgb(29, 90, 54);
+  color: rgb(36, 101, 79);
   background-color:white;
 }
 
 nav >div {
-  color:whitesmoke;
+  color:white;
   font-family: "Verdana",sans-serif;
   font-style: italic;
 }
 
-#welcome-user{
-  color:rgb(12, 66, 51)
+.intro {
+  color:rgb(242, 249, 247);
+  font-family: "Verdana",sans-serif;
+  font-style: italic;
+  font-weight: bold;
 }
 table {
   font-size: 15px;
