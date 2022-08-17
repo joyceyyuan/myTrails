@@ -1,23 +1,123 @@
-.brand-logo {
-  margin-left: 15px;
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: #424748;
 }
 
-.card .card-content .card-title {
-  margin-bottom: 10px;
+body {
+  height: 100vh;
+  margin:0;
+  font: 14px;
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: 
+    "nav"
+    "main"
 }
 
-#search-row form {
-  padding-top: 20px;
+body > nav {
+  background-color: #4b995c;
+  grid-area: nav;
+  display: flex;
+  justify-content: flex-center;
+  align-items: center;
+}
+body >nav >a {
+  color: white;
+  font: 25px;
 }
 
-.student-name {
-  position: relative;
-  top: -5px;
+
+body > main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #d2eedc;
 }
 
-.collection-item form {
-  margin-top: -5px;
+body > main h1:first-child {
+  margin-bottom: 45px;
 }
+
+nav > a {
+  margin: 20px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+nav > a:hover {
+  color: rgb(29, 90, 54);
+  background-color:white;
+}
+
+nav >div {
+  color:whitesmoke;
+  font-family: "Verdana",sans-serif;
+  font-style: italic;
+}
+
+#welcome-user{
+  color:rgb(12, 66, 51)
+}
+table {
+  font-size: 15px;
+}
+
+table thead th {
+  border-bottom: 2px solid #424748;
+}
+
+table td {
+  padding: 5px;
+  text-align: center;
+}
+
+
+#detail,#newreview {
+  color:white;
+  border-radius: 6px;
+  background-color: rgba(46, 117, 57, 0.5);
+  padding: 4px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+#detail:hover {
+  color: darkgreen;
+  background-color: white;
+}
+
+#newplanner:hover {
+  color: darkgreen;
+  background-color: white;
+}
+
+
+#new-form *, #add-review-form * {
+  font-size: 20px;
+}
+
+#add-review-form {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
+}
+
+
+#add-review-form {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  margin-bottom: 1em;
+}
+
+#add-review-form input[type="submit"]  {
+  width: 10em;
+  margin-bottom: 2rem;
+}
+
 .login {
   display: flex;
   justify-content: center;
@@ -32,9 +132,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.review-user img {
-  border-radius: 50%;
-  height: 40px;
 }

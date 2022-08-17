@@ -5,7 +5,7 @@
         <tr>
             <th>Name</th>
             <th>Length(mile)</th>
-            <th>Elevation Gain(ft)</th>
+            <th>Elevation Gain (ft)</th>
             <th>Difficulty</th>
             <th>Location</th>
         </tr>
@@ -18,7 +18,7 @@
             <td><%= t.elevationGain %></td>
             <td><%= t.difficulty %></td>
             <td><%= t.location %></td>
-            <td><a href="/trails/<%= t._id %>"> More details</a></td>
+            <td><a id="detail" href="/trails/<%= t._id %>"> More details</a></td>
         </tr>
     <% }); %>
     </tbody>

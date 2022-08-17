@@ -1,96 +1,95 @@
 <%- include('../partials/header') %>
 <section id="show-page">
-    <h2><%= trails.name %></h2>
-    <div>Length (mile): <%= trails.length %></div>
-    <div>Elevation Gain (ft): <%= trails.elevationGain %></div>
-    <div>Difficulty: <%= trails.difficulty %></div>
-    <div>Route Type: <%= trails.routeType %></div>
+    <h2><%= trail.name %></h2>
+    <div>Length (mile): <%= trail.length %></div>
+    <div>Elevation Gain (ft): <%= trail.elevationGain %></div>
+    <div>Difficulty: <%= trail.difficulty %></div>
+    <div>Route Type: <%= trail.routeType %></div>
 </section>
 
-<% if (user) { %>
-    <br><br>
-    <h3>Reviews</h3>
-    <form id="add-review-form" method="POST" action="/trails/<%= trails._id %>/reviews">
-    <label>Review:
-    <textarea name="content"></textarea>
-    </label><br>
-    <label>Rating:
-    <select name="rating">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5" selected>5</option>
-    </select>
-    </label><br>
-    <label>Activity Did:
-    <select name="activity">
-      <option value="Hiking" selected>Hiking</option>
-      <option value="Running">Running</option>
-      <option value="Biking">Biking</option>
-      <option value="Backpacking">Backpacking</option>
-      <option value="Snowshoeing">Snowshoeing</option>
-      <option value="Horseback riding">Horseback riding</option>
-    </select>
-    </label><br>
-    <input type="submit" value="Add Review">
-  </form>
-  <% } %>
-
-
-    <% if (trails.reviews.length) { %>
-      <table>
-        <thead>
-          <tr>
-            <th>UserName</th>
-            <th>UserEamil</th>
-            <th>Date Submitted</th>
-            <th>Review</th>
-            <th>Rating</th>
-            <th>Activity Did</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% let total = 0 %>
-          <% trails.reviews.forEach(function(r) { %>
-            <% total += r.rating %>
-            <tr>
-              <td><%= r.userName %></td>
-              <td><%= r.email %></td>
-              <td><%= r.createdAt.toLocaleDateString() %></td>
-              <td><%= r.content %></td>
-              <td><%= r.rating %></td>
-              <td><%= r.activityDid %></td>
-              <td>
-                <!-- <% if (user?._id.equals(r.user)) { %>
-                  <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-                    <button type="submit">X</button> -->
-                  <!-- </form>
-                  <form id="edit-review-form" method="GET" action="/reviews/<%= r._id %>/edit">
-                    <textarea name="content" value="<%= r.content %>"></textarea>
-                    <button type="submit">Edit</button>
-                  </form>
-                  <form action="/reviews/<%= r._id %>?_method=PUT" method="POST">
-                    <textarea name="content" value="<%= r.content %>"></textarea>
-                    <button type="submit">Update Review</button>
-                  </form> -->
-                  
-
-                <% } %>
-              </td>
-            </tr>
-    
-          <% }); %>
-          <tr>
-            <td colspan="3"></td>
-            <td><strong><%= (total / trails.reviews.length).toFixed(1) %></strong></td>
-          </tr>
-
-        </tbody>
-      </table>
+    <% if (user) { %>
+        <br><br>
+        <h3>Reviews</h3>
+        <form id="add-review-form" method="POST" action="/trails/<%= trail._id %>/reviews">
+        <label>Review:
+        <textarea name="content"></textarea>
+        </label><br>
+        <label>Rating:
+        <select name="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5" selected>5</option>
+        </select>
+        </label><br>
+        <label>Activity Did:
+        <select name="activity">
+          <option value="Hiking" selected>Hiking</option>
+          <option value="Running">Running</option>
+          <option value="Biking">Biking</option>
+          <option value="Backpacking">Backpacking</option>
+          <option value="Snowshoeing">Snowshoeing</option>
+          <option value="Horseback riding">Horseback riding</option>
+        </select>
+        </label><br>
+        <input type="submit" value="Add Review">
+      </form>
+      <% } %>
+        
       
-      <% } else { %>
-        <h5>No Reviews Yet</h5>
-        <% } %>
-
-<%- include('../partials/footer') %>
+        <% if (trail.reviews.length) { %> 
+          <table>
+            <thead>
+              <tr>
+                <th>UserName</th>
+                <th>UserEamil</th>
+                <th>Date Submitted</th>
+                <th>Review</th>
+                <th>Rating</th>
+                <th>Activity Did</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% let total = 0 %>
+              <% trail.reviews.forEach(function(r) { %>
+                <% total += r.rating %>
+                <tr>
+                  <td><%= r.userName %></td>
+                  <td><%= r.email %></td>
+                  <td><%= r.createdAt.toLocaleDateString() %></td>
+                  <td><%= r.content %></td>
+                  <td><%= r.rating %></td>
+                  <td><%= r.activityDid %></td>
+                  <td>
+                    <% if (user?._id.equals(r.user)) { %>
+                      <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                        <button type="submit">X</button> 
+                      </form>
+                      <form id="edit-review-form" method="GET" action="/reviews/<%= r._id %>/edit">
+                        <textarea name="content" value="<%= r.content %>"></textarea>
+                        <button type="submit">Edit</button>
+                      </form>
+                      <form action="/reviews/<%= r._id %>?_method=PUT" method="POST">
+                        <textarea name="content" value="<%= r.content %>"></textarea>
+                        <button type="submit">Update Review</button>
+                      </form> 
+                      
+                    <% } %>
+                  </td>
+                </tr>
+        
+              <% }); %>
+              <tr>
+                <td colspan="3"></td>
+                <td><strong><%= (total / trail.reviews.length).toFixed(1) %></strong></td>
+              </tr>
+    
+            </tbody>
+          </table>
+          
+        <% } else { %>
+            <h5>No Reviews Yet</h5>
+        <% } %> 
+    
+    <%- include('../partials/footer') %>
