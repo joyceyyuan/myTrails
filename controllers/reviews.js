@@ -64,7 +64,8 @@ function update(req, res) {
       if (!reviewSubdoc.user.equals(req.user._id)) return res.redirect(`/trails/${trail._id}`);
       // Update the content of the review
       reviewSubdoc.content = req.body.content;
-      console.log(req.body)
+      reviewSubdoc.rating = req.body.rating;
+      reviewSubdoc.activityDid = req.body.activityDid;
       console.log(reviewSubdoc,'<-reviewsubdoc')
       // Save the updated trail
       trail.save(function(err) {

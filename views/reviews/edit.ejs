@@ -7,7 +7,7 @@
     <textarea name="content" value="<%=review.content%>"></textarea>
     </label><br>
     <label>Rating:
-    <select name="rating">
+    <select name="rating" value="<%=review.rating%>">
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -16,7 +16,7 @@
     </select>
     </label><br>
     <label>Activity Did:
-    <select name="activityDid">
+    <select name="activityDid" value="<%=review.activityDid%>">
       <option value="Hiking" selected>Hiking</option>
       <option value="Running">Running</option>
       <option value="Biking">Biking</option>
