@@ -16,6 +16,7 @@ function create(req, res) {
     // First we have to find the trail
     Trail.findById(req.params.id, function (err, trail) {
         // then we need to add the review (aka req.body) to that trails reviews array
+        console.log(trail, " <- trail");
         // user centric CRUD!
         // req.user comes from passport! and it is the userDocument of the logged client
         req.body.user = req.user._id;
@@ -49,9 +50,9 @@ function deleteReview(req, res) {
 function edit(req, res) {
     Trail.findOne({ 'reviews._id': req.params.id }, function (err, trail) {
         // Find the review subdoc using the id method on Mongoose arrays
-        const reviewSubdoc = trail.reviews.id(req.params.id);
+        const review = trail.reviews.id(req.params.id);
         // Render the reviews/edit.ejs template, passing to it the review
-        res.render('reviews/edit', { review: reviewSubdoc });
+        res.render('reviews/edit', { review });
     });
 }
 
@@ -61,7 +62,7 @@ function update(req, res) {
         const reviewSubdoc = trail.reviews.id(req.params.id);
         // Ensure that the review was created by the logged in user
         if (!reviewSubdoc.user.equals(req.user._id)) return res.redirect(`/trails/${trail._id}`);
-        // Update the content,rating&activityDid of the reviews
+        // Update the content of the review
         reviewSubdoc.content = req.body.content;
         reviewSubdoc.rating = req.body.rating;
         reviewSubdoc.activityDid = req.body.activityDid;
