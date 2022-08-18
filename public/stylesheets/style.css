@@ -16,7 +16,7 @@ body {
 }
 
 body > nav {
-  background-color: #4b995c;
+  background-color: #115b20;
   opacity: 0.85;
   grid-area: nav;
   display: flex;
@@ -28,7 +28,9 @@ body >nav >a {
   font: 25px;
 }
 
-
+.fa-mountain-sun{
+  color:#e0eae2
+}
 body > main {
   grid-area: main;
   display: flex;
