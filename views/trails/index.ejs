@@ -1,26 +1,13 @@
 <%- include('../partials/header') %>
 <h1>Trails List</h1>
-<table id="'list">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Length(mile)</th>
-            <th>Elevation Gain (ft)</th>
-            <th>Difficulty</th>
-            <th>Location</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="list-container">
     <% trails.forEach(function(t) { %>
-        <tr>
-            <td><%= t.name %></td>
-            <td><%= t.length %></td>
-            <td><%= t.elevationGain %></td>
-            <td><%= t.difficulty %></td>
-            <td><%= t.location %></td>
-            <td><a id="detail" href="/trails/<%= t._id %>"> More details</a></td>
-        </tr>
+        <div class="grid-list">
+            <img src="<%= t.image %>" alt="picture of <%= t.name %>">
+            <div><%= t.name %>&nbsp;|&nbsp;<%= t.location %></div>
+            <div>Length:&nbsp;<%= t.length %>&nbsp;miles&nbsp;|&nbsp;Difficulty:&nbsp;<%= t.difficulty %></div>
+            <div><a id="detail" href="/trails/<%= t._id %>"> More details</a></div>
+        </div>
     <% }); %>
-    </tbody>
-</table>
+</div>
 <%- include('../partials/footer') %>

@@ -33,7 +33,7 @@ const trailSchema = new Schema({
     location: {
         type: String,
         required: true,
-        },
+    },
     length: { type: Schema.Types.Decimal, min: 0},
     elevationGain: {type: Number, min:0, max:29029},
     difficulty: {
@@ -45,6 +45,10 @@ const trailSchema = new Schema({
         type: String,
         enum: ['Loop','Out & back','Point to point'],
         default:'Loop'
+    },
+    image: {
+        type: String,
+        required: true,
     },
     // One to Many relationshipt (many reviews)
     reviews: [reviewSchema]

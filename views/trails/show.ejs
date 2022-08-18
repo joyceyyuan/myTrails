@@ -1,8 +1,9 @@
 <%- include('../partials/header') %>
 <section id="show-page">
     <h2><%= trail.name %></h2>
-    <div>Length (mile): <%= trail.length %></div>
-    <div>Elevation Gain (ft): <%= trail.elevationGain %></div>
+    <img src="<%= trail.image %>" alt="picture of <%= trail.name %>">
+    <div>Length: <%= trail.length %>&nbsp;miles</div>
+    <div>Elevation Gain: <%= trail.elevationGain %>&nbsp;ft</div>
     <div>Difficulty: <%= trail.difficulty %></div>
     <div>Route Type: <%= trail.routeType %></div>
 </section>
