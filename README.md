@@ -1,35 +1,57 @@
-# passport-boilerplate
+# MyTrails
+#### On this application, you may share your favorite trails along with pictures and some basic information about the trails. Besides, you are able to explore and find your next adventures here. Don't forget to check reviews that left by others and leave one! You may delete and update it later. 
+
+# Screenshots
+#### Landing Page
+<img src="https://i.imgur.com/uduncCi.png">
+
+#### Page to add a new trail
+<img src="https://i.imgur.com/hyysjhQ.png">
+
+#### Page to show all trails
+<img src="https://i.imgur.com/wOJbQ4Z.png">
+
+#### User's own trail list only showing the trails they added
+<img src="https://i.imgur.com/yPC5soO.png">
+
+#### Page to show details about a trail. Users may leave reviews here, which could be deleted and updated later by owner only.
+<img src="https://i.imgur.com/wXR3YXq.png">
 
 
-This is your passport boilerplate.
 
-## Setup 
+# Wireframe
+<img src="https://i.imgur.com/mbkIKW4.png">
+<img src="https://i.imgur.com/yyr7lCb.png">
 
-1. Clone the repo
-2. Rename the folder to your Project
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+# ERD
+<img src="https://i.imgur.com/edPpDMF.png">
+
+# Technology Used
+- CSS
+- HTML
+- Javascript
+- NodeJS
+- Express
+- MongoDB
+- Mongoose
+- OAuth2
 
 
-#### Setup your git repo
-0. Setup your `.env` file and add all the things you need! (look at mongoose movies for reference!)
-1. in the project root `git init`
-2. `git add .` to add all the starter code
-3. `git commit -m "setup boilerplate"` 
-4. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-5. copy the remote address
-6. In your terminal add the remote `git remote add origin yourGithubRepo'sAddressGoesHere`
-7. `git pull origin main` If a screen pulls up asking you to do something just press `:q` and then `enter` (thats vim btw :) )
-8. `git push origin main`
+# Getting Started
+[MyTrails App](https://explore-trails.herokuapp.com/)
+[Trello](https://trello.com/invite/b/Yrf48HH9/de3aa991138e84560666dbc5ebefc802/project2-mytrails)
 
-#### Setup your login (THE APP WON'T WORK until you do, no VIEWS are setup, or the landing route)
+# Next Steps
+- App is not fully functional after deloyment, need to fix that.
+- Implement planner feature: users may add trails to their planners.
+- Implement delete and edit function for trails.
+- Make navbar responsive on mobile devices.
 
-0. Setup your database connection string
-1. Then Setup Your User Model, 
-2. Follow the steps from the lesson plan to get your Google login credentials for your `.env` file (create the file if you haven't), or you can just copy the ones from earlier if you want to reuse them.
-3. Setup the Code in your config passport 
-4. Setup your callback routes in your `routes/index`
-5. Setup a view and test your login!
 
-#### Make a commit 
 
-```git commit -m "setup up oauth and User Model"```
+# Credit
+- Image: https://dribbble.com/tubik_arts , https://www.alltrails.com/
+- Information: https://www.alltrails.com/
+- Icon: https://fontawesome.com/
+- Special thanks to General Assembly instructors and TAs
+

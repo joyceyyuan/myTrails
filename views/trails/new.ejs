@@ -3,28 +3,28 @@
     <div class="container">
         <form id="new-form" action="/trails" method="POST">
             <label>Name:</label>
-                <input type="text" name="name">
+            <input type="text" name="name">
             <label>Location:</label>
-                <input type="text" name="location">
+            <input type="text" name="location">
             <label>Length (mile):</label>
-                <input type="number" name="length" min="0" step="0.1">
+            <input type="number" name="length" min="0" step="0.1">
             <label>Elevation Gain (ft):</label>
-                <input type="number" name="elevationGain" min="0" max="29029">
+            <input type="number" name="elevationGain" min="0" max="29029">
             <label>Difficulty:</label>
-                <select name="difficulty">
-                    <option value="Easy" selected>Easy</option>
-                    <option value="Moderate">Moderate</option>
-                    <option value="Hard">Hard</option>
-                </select>
+            <select name="difficulty">
+                <option value="Easy" selected>Easy</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Hard">Hard</option>
+            </select>
             <label>Route Type:</label>
-                <select name="route type">
-                    <option value="Out & back">Out & back</option>
-                    <option value="Loop" selected>Loop</option>
-                    <option value="Point to point">Point to point</option>
-                </select>
+            <select name="route type">
+                <option value="Out & back">Out & back</option>
+                <option value="Loop" selected>Loop</option>
+                <option value="Point to point">Point to point</option>
+            </select>
             <label>Upload an image:</label>
-                <input type="text" name="image" placeholder="Enter image URL here">
+            <input type="text" name="image" placeholder="Enter image URL here">
             <input type="submit" value="Add New Trail">
         </form>
     </div>
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>

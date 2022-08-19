@@ -7,9 +7,6 @@ module.exports = {
   index,
   show,
   myTrails
-  // edit,
-  // update,
-  // delete: deleteTrail
 };
 
 function show(req, res) {
@@ -28,9 +25,6 @@ function index(req, res) {
     if (err) {
       console.log(err, '<-error in Trail index controller')
     }
-    //response should be inside of callback
-    //because this is after we got a response from the database that
-    //we found all the trails
     res.render('trails/index', {
       trails: alltrailsInDatabase
     });
@@ -57,31 +51,6 @@ function create(req, res) {
     res.redirect('/trails'); 
   })
 }
-
-
-// function edit(req, res) {
-//   console.log(req.params.id, "<-req.params.id in Trails controller edit function")
-//   Trail.findById(req.params.id, function (err, trailDocument) {
-//     // Verify trail is "owned" by logged in user
-//     console.log(trailDocument, "<- this is trailDocument in Trail controller edit function")
-//     if (!trail.user.equals(req.user._id)) return res.redirect('/trails');
-//     res.render('trails/edit', { trails: trailDocument });
-//   });
-// }
-
-// function update(req, res) {
-//   Trail.findByIdAndUpdate(req.params.id, req.body, function (err, trail) {
-//     res.redirect(`/trails/${req.user._id}`);
-//   })
-// }
-
-// function deleteTrail(req, res) {
-//   Trail.findOneAndDelete(
-//     { _id: req.params.id, user: req.user._id }, function (err) {
-//       res.redirect(`/trails/${req.user._id}`);
-//     }
-//   );
-// }
 
 function myTrails(req, res) { 
   Trail.find ({user: req.user._id}, function(err, usersTrails){

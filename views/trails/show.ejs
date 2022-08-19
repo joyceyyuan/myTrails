@@ -1,5 +1,7 @@
 <%- include('../partials/header') %>
-  <h1><%= trail.name %></h1>
+  <h1>
+    <%= trail.name %>
+  </h1>
   <div class="container">
     <div class="list">
       <img src="<%= trail.image %>" alt="picture of <%= trail.name %>">
@@ -76,12 +78,12 @@
                     <td>
                       <% if (user?._id.equals(r.user)) { %>
                         <div class="delete-edit">
-                        <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-                          <button type="submit">Delete</button>
-                        </form>
-                        <p>&nbsp</p>
-                        <a href="/reviews/<%= r._id %>/edit"><button>Edit</button></a>
-                      </div>
+                          <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                            <button type="submit">Delete</button>
+                          </form>
+                          <p>&nbsp</p>
+                          <a href="/reviews/<%= r._id %>/edit"><button>Edit</button></a>
+                        </div>
                         <% } %>
                     </td>
                   </tr>

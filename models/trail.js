@@ -10,22 +10,22 @@ const Schema = mongoose.Schema;
 // One Trail has many Reviews, Review belongs to a Trail
 const reviewSchema = new Schema(
     {
-    content: String,
-    rating: { type: Number, min: 1, max: 5, default: 5 },
-    user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
-    userName: String,
-    email: String,
-    activityDid: {
-        type: String,
-        enum :['Hiking','Running','Biking','Backpacking','Snowshoeing','Horseback riding'],
-        default:'Hiking'
-    }
-},{
+        content: String,
+        rating: { type: Number, min: 1, max: 5, default: 5 },
+        user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+        userName: String,
+        email: String,
+        activityDid: {
+            type: String,
+            enum: ['Hiking', 'Running', 'Biking', 'Backpacking', 'Snowshoeing', 'Horseback riding'],
+            default: 'Hiking'
+        }
+    }, {
     timestamps: true
 });
 
 const trailSchema = new Schema({
-    user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
+    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     name: {
         type: String,
         required: true,
@@ -34,17 +34,17 @@ const trailSchema = new Schema({
         type: String,
         required: true,
     },
-    length: { type: Schema.Types.Decimal, min: 0},
-    elevationGain: {type: Number, min:0, max:29029},
+    length: { type: Schema.Types.Decimal, min: 0 },
+    elevationGain: { type: Number, min: 0, max: 29029 },
     difficulty: {
         type: String,
-        enum: ['Easy','Moderate','Hard'],
-        default:'Easy'
+        enum: ['Easy', 'Moderate', 'Hard'],
+        default: 'Easy'
     },
     routeType: {
         type: String,
-        enum: ['Loop','Out & back','Point to point'],
-        default:'Loop'
+        enum: ['Loop', 'Out & back', 'Point to point'],
+        default: 'Loop'
     },
     image: {
         type: String,
