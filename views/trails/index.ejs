@@ -1,8 +1,8 @@
 <%- include('../partials/header') %>
-<h1>Trails List</h1>
-<div class="list-container">
+<h1>Find your next trail</h1>
+<div class="container">
     <% trails.forEach(function(t) { %>
-        <div class="grid-list">
+        <div class="list">
             <img src="<%= t.image %>" alt="picture of <%= t.name %>">
             <div><%= t.name %>&nbsp;|&nbsp;<%= t.location %></div>
             <div>Length:&nbsp;<%= t.length %>&nbsp;miles&nbsp;|&nbsp;Difficulty:&nbsp;<%= t.difficulty %></div>

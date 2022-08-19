@@ -1,21 +1,30 @@
 <%- include('../partials/header') %>
-<section id="show-page">
-    <h2><%= trail.name %></h2>
-    <img src="<%= trail.image %>" alt="picture of <%= trail.name %>">
-    <div>Length: <%= trail.length %>&nbsp;miles</div>
-    <div>Elevation Gain: <%= trail.elevationGain %>&nbsp;ft</div>
-    <div>Difficulty: <%= trail.difficulty %></div>
-    <div>Route Type: <%= trail.routeType %></div>
-</section>
+  <section id="show-page">
+    <h1>
+      <%= trail.name %>
+    </h1>
+    <div class="container">
+      <div class="list">
+        <img src="<%= trail.image %>" alt="picture of <%= trail.name %>">
+        <div>Location: <%= trail.location %></div>
+        <div>Length: <%= trail.length %>&nbsp;miles</div>
+        <div>Elevation Gain: <%= trail.elevationGain %>&nbsp;ft</div>
+        <div>Difficulty: <%= trail.difficulty %>
+        </div>
+        <div>Route Type: <%= trail.routeType %>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <% if (user) { %>
-        <br><br>
-        <h4>Reviews</h4>
-        <form id="add-review-form" method="POST" action="/trails/<%= trail._id %>/reviews">
-        <label>Review:
+  <% if (user) { %>
+    <br><br>
+    <h4>Reviews</h4>
+    <form id="add-review-form" method="POST" action="/trails/<%= trail._id %>/reviews">
+      <label>Review:
         <textarea name="content"></textarea>
-        </label><br>
-        <label>Rating:
+      </label><br>
+      <label>Rating:
         <select name="rating">
           <option value="1">1</option>
           <option value="2">2</option>
@@ -23,8 +32,8 @@
           <option value="4">4</option>
           <option value="5" selected>5</option>
         </select>
-        </label><br>
-        <label>Activity Did:
+      </label><br>
+      <label>Activity Did:
         <select name="activityDid">
           <option value="Hiking" selected>Hiking</option>
           <option value="Running">Running</option>
@@ -33,56 +42,65 @@
           <option value="Snowshoeing">Snowshoeing</option>
           <option value="Horseback riding">Horseback riding</option>
         </select>
-        </label><br>
-        <input type="submit" value="Add Review">
-      </form>
-      <% } %>
-        
-      
-        <% if (trail.reviews.length) { %> 
-          <table>
-            <thead>
-              <tr>
-                <th>UserName</th>
-                <th>UserEamil</th>
-                <th>Date Submitted</th>
-                <th>Review</th>
-                <th>Rating</th>
-                <th>Activity Did</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% let total = 0 %>
+      </label><br>
+      <input type="submit" value="Add Review">
+    </form>
+    <% } %>
+
+      <% if (trail.reviews.length) { %>
+        <table>
+          <thead>
+            <tr>
+              <th>UserName</th>
+              <th>UserEamil</th>
+              <th>Date Submitted</th>
+              <th>Review</th>
+              <th>Rating</th>
+              <th>Activity Did</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% let total=0 %>
               <% trail.reviews.forEach(function(r) { %>
-                <% total += r.rating %>
-                <tr>
-                  <td><%= r.userName %></td>
-                  <td><%= r.email %></td>
-                  <td><%= r.createdAt.toLocaleDateString() %></td>
-                  <td><%= r.content %></td>
-                  <td><%= r.rating %></td>
-                  <td><%= r.activityDid %></td>
-                  <td>
-                    <% if (user?._id.equals(r.user)) { %>
-                      <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-                        <button type="submit">X</button>
-                      </form>
+                <% total +=r.rating %>
+                  <tr>
+                    <td>
+                      <%= r.userName %>
+                    </td>
+                    <td>
+                      <%= r.email %>
+                    </td>
+                    <td>
+                      <%= r.createdAt.toLocaleDateString() %>
+                    </td>
+                    <td>
+                      <%= r.content %>
+                    </td>
+                    <td>
+                      <%= r.rating %>
+                    </td>
+                    <td>
+                      <%= r.activityDid %>
+                    </td>
+                    <td>
+                      <% if (user?._id.equals(r.user)) { %>
+                        <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                          <button type="submit">X</button>
+                        </form>
                         <a id="edit-review-form" href="/reviews/<%= r._id %>/edit"> | Edit </a>
-                    <% } %>
-                  </td>
-                </tr>
-        
-              <% }); %>
-              <tr>
-                <td colspan="3"></td>
-                <td><strong><%= (total / trail.reviews.length).toFixed(1) %></strong></td>
-              </tr>
-    
-            </tbody>
-          </table>
-          
+                        <% } %>
+                    </td>
+                  </tr>
+                  <% }); %>
+                    <tr>
+                      <td colspan="3"></td>
+                      <td><strong>
+                          <%= (total / trail.reviews.length).toFixed(1) %>
+                        </strong></td>
+                    </tr>
+          </tbody>
+        </table>
         <% } else { %>
-            <h5>No Reviews Yet</h5>
-        <% } %> 
-    
-    <%- include('../partials/footer') %>
+          <h5>No Reviews Yet</h5>
+          <% } %>
+<%- include('../partials/footer') %>
