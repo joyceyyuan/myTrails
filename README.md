@@ -39,7 +39,7 @@
 
 # Getting Started
 [MyTrails App](https://explore-trails.herokuapp.com/)
-\newline
+<br />
 [Trello](https://trello.com/invite/b/Yrf48HH9/de3aa991138e84560666dbc5ebefc802/project2-mytrails)
 
 # Next Steps
