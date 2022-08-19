@@ -43,7 +43,7 @@
 [Trello](https://trello.com/invite/b/Yrf48HH9/de3aa991138e84560666dbc5ebefc802/project2-mytrails)
 
 # Next Steps
-- App is not fully functional after deloyment, need to fix that.
+- App runs locally but returns status code 500 on Heroku on mytrail page.
 - Implement planner feature: users may add trails to their planners.
 - Implement delete and edit function for trails.
 - Make navbar responsive on mobile devices.
