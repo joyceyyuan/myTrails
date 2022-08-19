@@ -46,7 +46,7 @@
 - App runs locally but returns status code 500 on Heroku on mytrail page.
 - Implement planner feature: users may add trails to their planners.
 - Implement delete and edit function for trails.
-- Make navbar responsive on mobile devices.
+- Make landing page and navbar responsive on mobile devices.
 
 
 
