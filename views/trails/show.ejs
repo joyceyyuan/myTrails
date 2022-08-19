@@ -6,7 +6,8 @@
     <div class="container">
       <div class="list">
         <img src="<%= trail.image %>" alt="picture of <%= trail.name %>">
-        <div>Location: <%= trail.location %></div>
+        <div>Location: <%= trail.location %>
+        </div>
         <div>Length: <%= trail.length %>&nbsp;miles</div>
         <div>Elevation Gain: <%= trail.elevationGain %>&nbsp;ft</div>
         <div>Difficulty: <%= trail.difficulty %>
@@ -16,43 +17,40 @@
       </div>
     </div>
   </section>
+  <br><br>
 
   <% if (user) { %>
-    <br><br>
     <h4>Reviews</h4>
     <form id="add-review-form" method="POST" action="/trails/<%= trail._id %>/reviews">
-      <label>Review:
-        <textarea name="content"></textarea>
-      </label><br>
-      <label>Rating:
-        <select name="rating">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5" selected>5</option>
-        </select>
-      </label><br>
-      <label>Activity Did:
-        <select name="activityDid">
-          <option value="Hiking" selected>Hiking</option>
-          <option value="Running">Running</option>
-          <option value="Biking">Biking</option>
-          <option value="Backpacking">Backpacking</option>
-          <option value="Snowshoeing">Snowshoeing</option>
-          <option value="Horseback riding">Horseback riding</option>
-        </select>
-      </label><br>
+      <label>Review:</label>
+      <textarea name="content"></textarea>
+      <label>Rating:</label>
+      <select name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5" selected>5</option>
+      </select>
+      <label>Activity Did:</label>
+      <select name="activityDid">
+        <option value="Hiking" selected>Hiking</option>
+        <option value="Running">Running</option>
+        <option value="Biking">Biking</option>
+        <option value="Backpacking">Backpacking</option>
+        <option value="Snowshoeing">Snowshoeing</option>
+        <option value="Horseback riding">Horseback riding</option>
+      </select>
       <input type="submit" value="Add Review">
     </form>
+    <br>
     <% } %>
 
       <% if (trail.reviews.length) { %>
         <table>
           <thead>
             <tr>
-              <th>UserName</th>
-              <th>UserEamil</th>
+              <th>User Name</th>
               <th>Date Submitted</th>
               <th>Review</th>
               <th>Rating</th>
@@ -66,9 +64,6 @@
                   <tr>
                     <td>
                       <%= r.userName %>
-                    </td>
-                    <td>
-                      <%= r.email %>
                     </td>
                     <td>
                       <%= r.createdAt.toLocaleDateString() %>
@@ -103,4 +98,5 @@
         <% } else { %>
           <h5>No Reviews Yet</h5>
           <% } %>
-<%- include('../partials/footer') %>
+
+            <%- include('../partials/footer') %>
