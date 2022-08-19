@@ -122,14 +122,21 @@ nav > div {
 
 }
 #new-form {
-  display: flex;
+  font-size: 18px;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-gap: 10px;
   border-radius: 5px;
   box-shadow: 0px 0px 5px 5px rgb(141 140 140 / 50%);
   margin: 10px;
   padding: 20px;
-  background-color: white;
+  background-color:white;
   filter: opacity(85%);
-  flex-direction: column;
+}
+#new-form input[type="submit"]  {
+  width: 350px;
+  margin: 10px auto;
+  text-align: center;
 }
 
 #detail {
@@ -147,7 +154,7 @@ nav > div {
 }
 
 
-#add-review-form {
+#review-form {
   font-size: 18px;
   display: grid;
   grid-template-columns: 100px 1fr;
@@ -160,14 +167,13 @@ nav > div {
   filter: opacity(85%);
 }
 
-
-#add-review-form input[type="submit"]  {
+#review-form input[type="submit"]  {
   width: 320px;
   margin: 10px auto;
   text-align: center;
 }
 
-h4{
+h5{
   text-align: center;
   font-weight: bold;
 }
@@ -187,4 +193,14 @@ table td {
   padding: 15px;
   text-align: center;
   color:#115b20
+}
+td > strong {
+  color:#115b20
+}
+
+.delete-edit {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  filter: opacity(85%)
 }

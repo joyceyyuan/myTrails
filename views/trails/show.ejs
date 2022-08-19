@@ -1,27 +1,25 @@
 <%- include('../partials/header') %>
-  <section id="show-page">
-    <h1>
-      <%= trail.name %>
-    </h1>
-    <div class="container">
-      <div class="list">
-        <img src="<%= trail.image %>" alt="picture of <%= trail.name %>">
-        <div>Location: <%= trail.location %>
-        </div>
-        <div>Length: <%= trail.length %>&nbsp;miles</div>
-        <div>Elevation Gain: <%= trail.elevationGain %>&nbsp;ft</div>
-        <div>Difficulty: <%= trail.difficulty %>
-        </div>
-        <div>Route Type: <%= trail.routeType %>
-        </div>
+  <h1>
+    <%= trail.name %>
+  </h1>
+  <div class="container">
+    <div class="list">
+      <img src="<%= trail.image %>" alt="picture of <%= trail.name %>">
+      <div>Location: <%= trail.location %>
+      </div>
+      <div>Length: <%= trail.length %>&nbsp;miles</div>
+      <div>Elevation Gain: <%= trail.elevationGain %>&nbsp;ft</div>
+      <div>Difficulty: <%= trail.difficulty %>
+      </div>
+      <div>Route Type: <%= trail.routeType %>
       </div>
     </div>
-  </section>
+  </div>
   <br><br>
 
   <% if (user) { %>
-    <h4>Reviews</h4>
-    <form id="add-review-form" method="POST" action="/trails/<%= trail._id %>/reviews">
+    <h5>Reviews</h5>
+    <form id="review-form" method="POST" action="/trails/<%= trail._id %>/reviews">
       <label>Review:</label>
       <textarea name="content"></textarea>
       <label>Rating:</label>
@@ -79,10 +77,13 @@
                     </td>
                     <td>
                       <% if (user?._id.equals(r.user)) { %>
+                        <div class="delete-edit">
                         <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-                          <button type="submit">X</button>
+                          <button type="submit">Delete</button>
                         </form>
-                        <a id="edit-review-form" href="/reviews/<%= r._id %>/edit"> | Edit </a>
+                        <p>&nbsp</p>
+                        <a href="/reviews/<%= r._id %>/edit"><button>Edit</button></a>
+                      </div>
                         <% } %>
                     </td>
                   </tr>
@@ -98,5 +99,4 @@
         <% } else { %>
           <h5>No Reviews Yet</h5>
           <% } %>
-
             <%- include('../partials/footer') %>
